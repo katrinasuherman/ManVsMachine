@@ -1,22 +1,24 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-const margin = { top: 50, right: 100, bottom: 50, left: 100 };
-const width = 1200 - margin.left - margin.right;
+const margin = { top: 50, right: 100, bottom: 50, left: 1};
+const width = 1800 - margin.left - margin.right;
 const height = 600 - margin.top - margin.bottom;
 
 const svg = d3
   .select("#parallelPlot")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
+  .style("margin", "0")
   .style("display", "block")
-  .style("margin-left", "0")
   .append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
+  
+
 const dimensions = ["age", "death_inhosp", "weight", "op_duration_hr"];
 const colorMap = {
-  Open: "#e41a1c",        // red
-  Robotic: "#377eb8",     // blue
+  Open: "#377eb8",     // blue
+  Robotic: "#e41a1c",        // red
   Videoscopic: "#4daf4a"   // green
 };
 
@@ -70,10 +72,10 @@ d3.csv("with_opdur.csv").then((data) => {
       .text(dim);
   });
 
-  // Add legend
+  // Add legend to the left of the plot
   const legend = svg.append("g")
     .attr("class", "legend")
-    .attr("transform", `translate(${width - 150}, 0)`);
+    .attr("transform", `translate(${-margin.left + 20}, 0)`);
 
   Object.entries(colorMap).forEach(([label, color], i) => {
     const legendRow = legend.append("g")
@@ -92,3 +94,4 @@ d3.csv("with_opdur.csv").then((data) => {
       .text(label);
   });
 });
+
