@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Parallel Coordinates: Age vs Mortality</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #ccc;
+      shape-rendering: crispEdges;
+    }
+    .line {
+      fill: none;
+      stroke-width: 1.5px;
+      opacity: 0.7;
+    }
+    .line:hover {
+      stroke-width: 3px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <h2>Man vs Machine: Parallel Coordinates Plot</h2>
+  <svg id="parallelPlot" width="800" height="500"></svg>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
